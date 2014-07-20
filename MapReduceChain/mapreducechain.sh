@@ -7,28 +7,28 @@ case $i in
 	echo "# Compile scripts"
 	sudo javac -classpath `yarn classpath` -d classes/ *.java
 	echo "# Create JAR"
-	sudo jar cvf sametaste.jar -C classes/ com 
+	sudo jar cvf mapreducechain.jar -C classes/ com 
 	shift
 	;;
     -c|--cleanup)
 	echo "# Cleanup HDFS result directory"
-	hdfs dfs -rm -r /tmp/testing/sametaste_out
+	hdfs dfs -rm -r /tmp/testing/mapreducechain_out
 	shift
 	;;
     -i|--input)
 	echo "# Create input directory and copy input file"
-	hdfs dfs -mkdir -p /tmp/testing/sametaste_in
-	hdfs dfs -copyFromLocal ./tastes.txt /tmp/testing/sametaste_in
+	hdfs dfs -mkdir -p /tmp/testing/mapreducechain_in
+	hdfs dfs -copyFromLocal ./input.txt /tmp/testing/mapreducechain_in
 	shift
 	;;
     -r|--run)
 	echo "# Run hadoop job"
-	hadoop jar sametaste.jar com.baswenneker.SameTasteJob /tmp/testing/sametaste_in /tmp/testing/sametaste_out
+	hadoop jar mapreducechain.jar com.baswenneker.MapReduceChainJob /tmp/testing/mapreducechain_in /tmp/testing/mapreducechain_out
 	shift
 	;;
     -s|--show)
 	echo "# Show results"
-	hdfs dfs -cat /tmp/testing/sametaste_out/part-r-00000
+	hdfs dfs -cat /tmp/testing/mapreducechain_out/part-r-00000
 	shift
 	;;
     -h|--help)

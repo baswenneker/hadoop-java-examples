@@ -1,0 +1,11 @@
+Usage: ./sametaste.sh [--COMMAND] ... [--COMMAND]
+    Where COMMAND is one of:
+
+    build [-b]      Compile and create jar file in EXAMPLEDIR/SameTaste.
+    cleanup [-c]    Remove Hadoop run output on HDFS (/tmp/testing/sametaste_out).
+    input [-i]      Create HDFS input directory (/tmp/testing/sametaste_in) and move tastes.txt to this directory
+    run [-r]        Start the Hadoop job
+    show [-s]       Show results
+    help [-h]       Show this help
+
+Note that the commands are executed in the parameter order. 

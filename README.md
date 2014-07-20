@@ -5,7 +5,7 @@ This repository contains MapReduce examples written in Java.
 ## Installation
 
 #### No Hadoop installed
-If you have no Hadoop instance, use (this)[http://baswenneker.github.io/blog/2014/07/09/setting-up-hadoop-using-vagrant.html "Setting up Hadoop using Vagrant"] post to create a virtual environment. After you've installed the latest versions of (Vagrant)[http://www.vagrantup.com] and (VirtualBox)[https://www.virtualbox.org], execute the following commands to set up the environment and access the Hadoop node using SSH:
+If you have no Hadoop instance, use [this](http://baswenneker.github.io/blog/2014/07/09/setting-up-hadoop-using-vagrant.html "Setting up Hadoop using Vagrant") post to create a virtual environment. After you've installed the latest versions of [Vagrant](http://www.vagrantup.com) and [VirtualBox](https://www.virtualbox.org), execute the following commands to set up the environment and access the Hadoop node using SSH:
 
 ```bash
 $ git clone https://github.com/baswenneker/hadoop-single-node-vagrant.git
@@ -13,7 +13,6 @@ $ cd hadoop-single-node-vagrant/
 $ git clone https://github.com/baswenneker/hadoop-java-examples.git
 $ vagrant up
 $ vagrant ssh -- -l hduser # Note the password is hduser
-$ cd /vagrant/hadoop-java-examples/SameTaste
 ```
 
 #### Hadoop installed
