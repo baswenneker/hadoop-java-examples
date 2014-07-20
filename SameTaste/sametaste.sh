@@ -31,6 +31,10 @@ case $i in
 	hdfs dfs -cat /tmp/testing/sametaste_out/part-r-00000
 	shift
 	;;
+    -h|--help)
+    cat help.txt	
+    shift
+	;;
     *)
 	echo "# Unknown option $key"
 	# exit 1    
