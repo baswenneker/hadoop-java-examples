@@ -24,6 +24,7 @@ public class SortMapper extends Mapper<LongWritable, Text, LongWritable, IntWrit
         while(tokenizer.hasMoreTokens()){
             i = Integer.parseInt(tokenizer.nextToken());
             i += i%2;
+            LOG.info("LOOP "+i);
             context.write(key, new IntWritable(i));
         }
     }

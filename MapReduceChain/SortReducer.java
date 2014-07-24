@@ -28,14 +28,32 @@ import org.apache.commons.collections.IteratorUtils;
     @Override
     public void reduce(LongWritable key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
         
-        LOG.info(" LOG REDUCER CALLED");
+        LOG.info(" LOG REDUCER CALLED "+key);
 
-        List<IntWritable> list = IteratorUtils.toList(values.iterator());  
-        Collections.sort(list);
+        //List<IntWritable> list = IteratorUtils.toList(values.iterator()); 
         String output ="";
-        for (Iterator it = list.iterator(); it.hasNext(); ) {
-            output += it.next() + " ";
+
+        while (values.iterator().hasNext()) {
+            output += values.iterator().next() + " ";
+            LOG.info("Loop"+output);
         }
+
+        LOG.info(output);
+        /*for(IntWritable i: list){
+            LOG.info("NOT SORTED "+output);
+            output += i + " ";
+        }
+
+        Collections.sort(list);
+        output ="";
+        for(IntWritable i: list){
+        LOG.info("SORTED "+output);
+            output += i + " ";
+        }*/
+        //for (Iterator it = list.iterator(); it.hasNext(); ) {
+        //    LOG.info(output);
+        //    output += it.next() + " ";
+        //}
 
         context.write(key, new Text(output));
     }
