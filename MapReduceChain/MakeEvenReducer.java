@@ -1,6 +1,7 @@
 package MapReduceChain;
 
 import java.io.IOException;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.io.IntWritable;
@@ -9,16 +10,17 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 
-public class SortReducer extends
+public class MakeEvenReducer extends
 		Reducer<LongWritable, IntWritable, LongWritable, Text> {
-	
-    public static final Log LOG = LogFactory.getLog(SortReducer.class);
+	public static final Log LOG = LogFactory.getLog(MakeEvenReducer.class);
 
 	@Override
 	public void reduce(LongWritable key, Iterable<IntWritable> values,
 			Context context) throws IOException, InterruptedException {
 
-        String output = "Sorted list of even numbers for " + key + ": ";
+		LOG.info("LOG REDUCER CALLED " + key);
+		
+        String output = "";
 		while (values.iterator().hasNext()) {
 			output += values.iterator().next() + " ";
 		}
@@ -28,4 +30,3 @@ public class SortReducer extends
         context.write(null, new Text(output));
 	}
 }
-
